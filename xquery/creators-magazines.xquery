@@ -11,7 +11,7 @@ declare namespace ns2="http://viaf.org/viaf/terms#";
 	return label, author, mag, contrib-count
  :)
  
- declare variable $collection := '/db/bluemtn/metadata/periodicals';
+ declare variable $collection := '/db/bluemtn/metadata/periodicals/bmtnaaz';
 
 
  let $creators := collection($collection)//mods:name[
