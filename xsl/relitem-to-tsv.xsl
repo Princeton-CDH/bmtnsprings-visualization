@@ -31,10 +31,18 @@
 		<field>pubdate</field>
 	</xsl:variable>
 	
+	<xsl:function name="local:clean-viaf">
+		<xsl:param name="viafurl" />
+		<xsl:value-of select="replace($viafurl, '&#xA;','')" />
+	</xsl:function>
+	
 	<xsl:function name="local:authorized-name">
-		<xsl:param name="viafid" />
+		<xsl:param name="viafurl" />
+		<xsl:variable name="cleanurl">
+			<xsl:value-of select="local:clean-viaf($viafurl)"></xsl:value-of>
+		</xsl:variable>
 		<xsl:variable name="url">
-			<xsl:value-of select="concat($viafid, '.xml')" />
+			<xsl:value-of select="concat($cleanurl, '.xml')" />
 		</xsl:variable>
 		<xsl:value-of select="concat('&quot;', document($url)//ns2:mainHeadings/ns2:data[1]/ns2:text, '&quot;')" />
 	</xsl:function>
@@ -60,7 +68,7 @@
 		
 		<!-- the creators; there may be more than one, so separate with commas -->
 		<xsl:for-each select="mods:name">
-			<xsl:value-of select="@valueURI" />
+			<xsl:value-of select="local:clean-viaf(@valueURI)" />
 			<xsl:if test="position() != last()">
 				<xsl:text>,&#xA0;</xsl:text>
 			</xsl:if>

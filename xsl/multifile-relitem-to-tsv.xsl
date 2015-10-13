@@ -53,10 +53,16 @@
 			<xd:p>URL of a viaf resource</xd:p>
 		</xd:param>
 	</xd:doc>
+	
+	<xsl:function name="local:clean-viaf">
+		<xsl:param name="viafurl" />
+		<xsl:value-of select="replace($viafurl, '&#xA;','')" />
+	</xsl:function>
+	
 	<xsl:function name="local:authorized-name">
 		<xsl:param name="viafurl" />
 		<xsl:variable name="url">
-			<xsl:value-of select="concat($viafurl, '.xml')" />
+			<xsl:value-of select="concat(local:clean-viaf($viafurl), '.xml')" />
 		</xsl:variable>
 		<xsl:value-of select="concat('&quot;', document($url)//ns2:mainHeadings/ns2:data[1]/ns2:text, '&quot;')" />
 	</xsl:function>
@@ -116,7 +122,7 @@
 		
 		<!-- the creators; there may be more than one, so separate with | -->
 		<xsl:for-each select="mods:name">
-			<xsl:value-of select="@valueURI" />
+			<xsl:value-of select="local:clean-viaf(@valueURI)" />
 			<xsl:if test="position() != last()">
 				<xsl:text>|</xsl:text>
 			</xsl:if>
@@ -134,7 +140,7 @@
 		
 		<!-- Authorized names -->
 		<xsl:for-each select="mods:name">
-			<xsl:value-of select="local:authorized-name(@valueURI)" />
+			<xsl:value-of select="local:authorized-name(local:clean-viaf(@valueURI))" />
 			<xsl:if test="position() != last()">
 				<xsl:text>|</xsl:text>
 			</xsl:if>
