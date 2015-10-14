@@ -6,7 +6,7 @@ declare namespace xlink="http://www.w3.org/1999/xlink";
 declare namespace ns2="http://viaf.org/viaf/terms#";
 declare namespace local="http://bluemountain.princeton.edu/springs";
 
-declare variable $collection := '/db/bluemtn/metadata/periodicals/bmtnaaz';
+declare variable $collection := '/db/bluemtn/metadata/periodicals/bmtnaap';
 
 (:
 	Generate a table of triples: date, genre, count.
