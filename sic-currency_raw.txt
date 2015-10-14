@@ -1,0 +1,42 @@
+Issue	Date	Pages
+No. 1	Jan 1916	10
+No. 2	Feb 1916	8
+No. 3	Mar 1916	8
+No. 4	Apr 1916	8
+No. 5	May 1916	8
+No. 6	Jun 1916	8
+No. 7	Jul 1916	8
+No. 8, 9, 10	Aug 1916	23
+No. 11	Nov 1916	8
+No. 12	Dec 1916	8
+No. 13	Jan 1917	7
+No. 14	Feb 1917	8
+No. 15	Mar 1917	8
+No. 16	Apr 1917	7
+No. 17	May 1917	8
+No. 18	Jun 1917	8
+No. 19-20	Jul 1917	12
+No. 21-21	Sep 1917	11
+No. 23	Nov 1917	8
+No. 24	Dec 1917	8
+No. 25	Jan 1918	8
+No. 26	Feb 1918	8
+No. 27	Mar 1918	8
+No. 28	Apr 1918	8
+No. 29	May 1918	8
+No. 30	Jun 1918	6
+No. 31	Oct 1918	8
+No. 32 2e No d'Octobre	Oct 1918	8
+No. 33 1e No de Novembre	Nov 1918	8
+No. 34 2e No de Novembre	Nov 1918	8
+No. 35	Dec 1918	8
+No. 36 2e No de Décembre	Dec 1918	8
+Nos 37, 38, 39	Jan 1919	32
+Nos 40 et 41	Feb 1919	20
+Nos 42 et 43	Mar 1919	18
+No 44	Apr 1919	12
+Nos 45 & 46	May 1919	20
+Nos 47 & 48	Jun 1919	20
+Nos 49 & 50	Oct 1919	20
+Nos 51 & 52	Nov 1919	20
+Nos 53 & 54	Dec 1919	20
