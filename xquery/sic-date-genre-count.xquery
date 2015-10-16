@@ -34,15 +34,30 @@ declare function local:w3cdtf-to-xsdate($d as xs:string) as xs:date
   return xs:date($dstring)
 };
 
+declare function local:issue-label($issue as element())
+as xs:string
+{
+	let $volnum := $issue/mods:part[@type='issue']/mods:detail[@type='volume']/mods:number/text()
+	let $numnum := $issue/mods:part[@type='issue']/mods:detail[@type='number']/mods:number/text()
+	let $label := concat("No. ", $numnum)
+	let $label :=
+		if ($volnum)
+			then concat('Vol. ', $volnum, ' ', $label)
+		else $label
+	return $label
+};
+
+
 let $issues := collection($collection)//mods:mods[mods:genre = 'Periodicals-Issue']
-let $header := string-join(('date', 'textcount', 'illustrationcount', 'addcount', 'musiccount'), ',')
+let $header := string-join(('label','date', 'textcount', 'illustrationcount', 'addcount', 'musiccount'), ',')
 let $rows   := 
 	for $issue in collection($collection)//mods:mods[mods:genre = 'Periodicals-Issue']
-  	let $date := local:w3cdtf-to-xsdate($issue/mods:originInfo/mods:dateIssued[@keyDate='yes'])
+		let $label := local:issue-label($issue)
+  	let $date  := local:w3cdtf-to-xsdate($issue/mods:originInfo/mods:dateIssued[@keyDate='yes'])
   	let $textcount   := count($issue/mods:relatedItem[@type='constituent']/mods:genre[@type = 'CCS' and . = 'TextContent'])
   	let $illustcount := count($issue/mods:relatedItem[@type='constituent']/mods:genre[@type = 'CCS' and .= 'Illustration'])
   	let $adcount     := count($issue/mods:relatedItem[@type='constituent']/mods:genre[@type = 'CCS' and .= 'SponsoredAdvertisement'])
   	let $musiccount  := count($issue/mods:relatedItem[@type='constituent']/mods:genre[@type = 'CCS' and .= 'Music'])
-	  return string-join(($date,$textcount,$illustcount,$adcount,$musiccount), ',')
+	  return string-join(($label,$date,$textcount,$illustcount,$adcount,$musiccount), ',')
 
 return ($header,$rows)
